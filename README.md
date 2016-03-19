@@ -4,7 +4,17 @@ Given a Who's On First ID resolve its absolute URL.
 
 ## Caveats
 
-Currently the default root for all absolute URLs is `https://whosonfirst.mapzen.com/data/`. It is not possible to specify alternatives. Yet.
+Currently the default root for all absolute URLs is `https://whosonfirst.mapzen.com/data/`.
+
+It is not possible to specify alternatives. Yet.
+
+## Build
+
+The easiest thing is just to use the handy `build` target in the Makefile. This will fetch all the dependencies and build all the tools, described below. Like this:
+
+```
+$> make build
+```
 
 ## Tools
 
