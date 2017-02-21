@@ -1,7 +1,7 @@
 package roundhouse
 
 import (
-	"github.com/whosonfirst/go-whosonfirst-utils"
+	"github.com/whosonfirst/go-whosonfirst-uri"
 	"net/url"
 )
 
@@ -16,6 +16,11 @@ func NewWOFRoundhouse() *WOFRoundhouse {
 
 func (r *WOFRoundhouse) URL(wofid int) (*url.URL, error) {
 
-	rel := utils.Id2RelPath(wofid)
+	rel, err := uri.Id2RelPath(wofid)
+
+	if err != nil {
+		return nil, err
+	}
+
 	return url.Parse(r.Base + rel)
 }
