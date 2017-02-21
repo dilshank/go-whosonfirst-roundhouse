@@ -28,4 +28,4 @@ fmt:
 
 bin: 	self
 	@GOPATH=$(shell pwd) go build -o bin/wof-roundhouse cmd/wof-roundhouse.go
-	@GOPATH=$(shell pwd) go build -o bin/wof-roundhouse-server cmd/wof-roundhouse-server.go
+	@GOPATH=$(shell pwd) go build -o bin/wof-roundhoused cmd/wof-roundhoused.go
