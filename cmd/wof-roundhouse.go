@@ -16,7 +16,7 @@ func main() {
 
 	for _, id := range flag.Args() {
 
-		wofid, err := strconv.Atoi(id)
+		wofid, err := strconv.ParseInt(id, 10, 64)
 
 		if err != nil {
 			panic(err)

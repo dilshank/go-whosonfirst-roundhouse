@@ -34,7 +34,7 @@ func main() {
 
 		id := m[1]
 
-		wofid, err := strconv.Atoi(id)
+		wofid, err := strconv.ParseInt(id, 10, 64)
 
 		if err != nil {
 			http.Error(rsp, "E_INVALID_WOFID", http.StatusBadRequest)

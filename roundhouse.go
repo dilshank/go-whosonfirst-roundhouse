@@ -14,7 +14,7 @@ func NewWOFRoundhouse() *WOFRoundhouse {
 	return &r
 }
 
-func (r *WOFRoundhouse) URL(wofid int) (*url.URL, error) {
+func (r *WOFRoundhouse) URL(wofid int64) (*url.URL, error) {
 
 	rel, err := uri.Id2RelPath(wofid)
 
