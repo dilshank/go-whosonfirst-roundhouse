@@ -26,7 +26,7 @@ https://whosonfirst.mapzen.com/data/857/848/31/85784831.geojson
 https://whosonfirst.mapzen.com/data/102/020/079/102020079.geojson
 ```
 
-### wof-roundhouse-server
+### wof-roundhoused
 
 ```
 ./bin/wof-roundhouse-server -h
@@ -57,6 +57,20 @@ $> curl -v http://localhost:8080/85784831
 < Content-Type: text/html; charset=utf-8
 < 
 <a href="https://whosonfirst.mapzen.com/data/857/848/31/85784831.geojson">See Other</a>.
+```
+
+### wof-roundhouse-repod
+
+```
+./bin/wof-roundhouse-repod /usr/local/mapzen/whosonfirst-data*
+2017/07/03 15:50:47 start indexing whosonfirst-data-venue-us-ca at 2017-07-03 15:50:47.808249449 +0000 UTC
+2017/07/03 15:50:47 start indexing whosonfirst-data at 2017-07-03 15:50:47.809042249 +0000 UTC
+2017/07/03 15:50:47 start indexing whosonfirst-data-venue-ca at 2017-07-03 15:50:47.810867862 +0000 UTC
+2017/07/03 15:51:27 time to index whosonfirst-data-venue-ca: 39.240279572s
+2017/07/03 15:51:32 time to index whosonfirst-data: 44.511392089s
+2017/07/03 15:51:51 time to index whosonfirst-data-venue-us-ca: 1m3.898184345s
+2017/07/03 15:51:51 time to index all: 1m3.898692508s
+2017/07/03 15:51:51 indexed 2577907 pairs
 ```
 
 ## See also

@@ -31,7 +31,7 @@ func main() {
 	var host = flag.String("host", "localhost", "The hostname to listen for requests on")
 	var port = flag.Int("port", 8080, "The port number to listen for requests on")
 
-	var prefix = flag.String("prefix", "/data/", "...")
+	var prefix = flag.String("prefix", "", "...")
 	var strict = flag.Bool("strict", false, "...")
 
 	var max_fh = flag.Int("max-filehandles", 100, "The maximum number of filehandles to keep open while indexings repos")
@@ -249,6 +249,8 @@ func main() {
 
 		rel_path := filepath.Join(parent, fname)
 		abs_path := filepath.Join(root, rel_path)
+
+		log.Printf("%s resolves to %s\n", url.Path, abs_path)
 
 		fh, err := os.Open(abs_path)
 
