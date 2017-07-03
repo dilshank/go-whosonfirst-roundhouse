@@ -68,7 +68,6 @@ func main() {
 				log.Printf("indexed %d pairs\n", pairs)
 				break
 			case r := <- repo_ch:
-				log.Printf("%d -> %s\n", r.Index, r.Path)
 				repo_map[r.Index] = r.Path
 			case p := <-path_ch:
 				lookup_map[p.Id] = p.Repo
@@ -85,8 +84,6 @@ func main() {
 		t1 := time.Now()
 
 		for r, root := range paths {
-
-			log.Println(r, root)
 
 			go func(root string, r int, repo_ch chan Repo, done_ch chan bool) {
 
@@ -121,8 +118,6 @@ func main() {
 					if !strings.HasSuffix(path, "-latest.csv") {
 						return nil
 					}
-
-					// log.Printf("waiting on FH throttle to read %s\n", path)
 
 					<-fh_throttle
 
