@@ -75,7 +75,7 @@ $> curl -v http://localhost:8080/85784831
 
 ## Docker
 
-[Yes](Dockerfile).
+[Yes](Dockerfile). Well, at least for `wof-roundhoused`. I'm not sure how (or where) to define Dockerfiles for multiple services yet. If you know, [I'd love to hear about it](https://github.com/whosonfirst/go-whosonfirst-roundhouse/issues).
 
 ```
 docker build -t wof-roundhoused .
