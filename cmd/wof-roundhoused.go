@@ -21,7 +21,13 @@ func main() {
 	rh := roundhouse.NewWOFRoundhouse()
 	rh.Base = *base
 
-	handler, err := http.IDHandler(rh)
+	id_handler, err := http.IDHandler(rh)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	ping_handler, err := http.PingHandler()
 
 	if err != nil {
 		log.Fatal(err)
@@ -30,7 +36,8 @@ func main() {
 	address := fmt.Sprintf("%s:%d", *host, *port)
 
 	mux := gohttp.NewServeMux()
-	mux.Handle("/", handler)
+	mux.Handle("/", id_handler)
+	mux.Handle("/ping", ping_handler)	
 
 	err = gohttp.ListenAndServe(address, mux)
 
