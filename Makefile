@@ -5,6 +5,7 @@ self:   prep
 	if test -d src; then rm -rf src; fi
 	mkdir -p src/github.com/whosonfirst/go-whosonfirst-roundhouse
 	cp roundhouse.go src/github.com/whosonfirst/go-whosonfirst-roundhouse/
+	cp -r http src/github.com/whosonfirst/go-whosonfirst-roundhouse/
 	cp -r vendor/* src/
 
 rmdeps:
@@ -26,6 +27,7 @@ vendor-deps: rmdeps deps
 
 fmt:
 	go fmt cmd/*.go
+	go fmt http/*.go
 	go fmt *.go
 
 bin: 	self

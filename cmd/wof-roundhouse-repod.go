@@ -1,5 +1,9 @@
 package main
 
+// everything in here needs to be updated from moving the HTTP handler code
+// in to the http package to https://github.com/whosonfirst/go-whosonfirst-roundhouse/issues/1
+// (20171211/thisisaaronland)
+
 import (
 	"flag"
 	"fmt"
@@ -17,13 +21,13 @@ import (
 )
 
 type Repo struct {
-     Index int
-     Path string
+	Index int
+	Path  string
 }
 
 type Path struct {
-     Id int64
-     Repo int
+	Id   int64
+	Repo int
 }
 
 func main() {
@@ -67,7 +71,7 @@ func main() {
 				indexing = false
 				log.Printf("indexed %d pairs\n", pairs)
 				break
-			case r := <- repo_ch:
+			case r := <-repo_ch:
 				repo_map[r.Index] = r.Path
 			case p := <-path_ch:
 				lookup_map[p.Id] = p.Repo
@@ -156,7 +160,7 @@ func main() {
 
 						// test that file exists here?
 
-						path_ch <- Path{ wofid, r }
+						path_ch <- Path{wofid, r}
 					}
 
 					return nil
@@ -200,7 +204,7 @@ func main() {
 		url := req.URL
 		path := url.Path
 
-		if *prefix != ""{
+		if *prefix != "" {
 			path = strings.Replace(path, *prefix, "", 1)
 		}
 
@@ -240,7 +244,7 @@ func main() {
 		fname := filepath.Base(path)
 		parent, err := uri.Id2Path(id)
 
-		if err != nil{
+		if err != nil {
 			http.Error(rsp, err.Error(), http.StatusInternalServerError)
 			return
 		}
@@ -260,7 +264,7 @@ func main() {
 		}
 
 		rsp.Header().Set("Access-Control-Allow-Origin", "*")
-                rsp.Header().Set("Content-Type", "application/json")
+		rsp.Header().Set("Content-Type", "application/json")
 
 		io.Copy(rsp, fh)
 		return
