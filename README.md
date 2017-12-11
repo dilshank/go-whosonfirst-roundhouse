@@ -73,6 +73,18 @@ $> curl -v http://localhost:8080/85784831
 2017/07/03 15:51:51 indexed 2577907 pairs
 ```
 
+## Docker
+
+[Yes](Dockerfile).
+
+```
+docker build -t wof-roundhoused .
+docker run -p 6161:8080 -e BASE='https://example.com/' -e HOST='0.0.0.0' wof-roundhoused
+
+curl localhost:6161/1234
+<a href="https://example.com/123/4/1234.geojson">See Other</a>.
+```
+
 ## See also
 
 * https://github.com/whosonfirst/go-whosonfirst-utils
