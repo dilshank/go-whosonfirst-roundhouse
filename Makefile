@@ -32,3 +32,6 @@ bin: 	self
 	@GOPATH=$(shell pwd) go build -o bin/wof-roundhouse cmd/wof-roundhouse.go
 	@GOPATH=$(shell pwd) go build -o bin/wof-roundhoused cmd/wof-roundhoused.go
 	@GOPATH=$(shell pwd) go build -o bin/wof-roundhouse-repod cmd/wof-roundhouse-repod.go
+
+docker-build: bin
+	docker build -t wof-roundhoused .

@@ -14,10 +14,13 @@ func main() {
 
 	var host = flag.String("host", "localhost", "The hostname to listen for requests on")
 	var port = flag.Int("port", 8080, "The port number to listen for requests on")
-
+	var base = flag.String("base", "https://whosonfirst.mapzen.com/data/", "Where your Who's On First data lives")
+	
 	flag.Parse()
 
 	rh := roundhouse.NewWOFRoundhouse()
+	rh.Base = *base
+	
 	re := regexp.MustCompile("/([0-9]+)/?$")
 
 	handler := func(rsp http.ResponseWriter, req *http.Request) {
