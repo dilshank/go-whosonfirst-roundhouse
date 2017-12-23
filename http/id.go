@@ -43,6 +43,8 @@ func IDHandler(rh *roundhouse.WOFRoundhouse) (gohttp.Handler, error) {
 			return
 		}
 
+		rsp.Header().Set("Access-Control-Allow-Origin", "*")
+		
 		gohttp.Redirect(rsp, req, u.String(), gohttp.StatusSeeOther)
 		return
 	}
